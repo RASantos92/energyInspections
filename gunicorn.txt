@@ -1,0 +1,32 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/energyInspections
+ExecStart=/home/ubuntu/energyInspections/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/energyInspections/inspection.sock inspection.wsgi:application
+[Install]
+WantedBy=multi-user.target
+
+
+server {
+  listen 80;
+  server_name 18.216.150.244;
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location /static/ {
+      root /home/ubuntu/energyInspections;
+  }
+  location / {
+      include proxy_params;
+      proxy_pass http://unix:/home/ubuntu/energyInspections/inspection.sock;
+  }
+}
+
+to update site
+
+check the end of deployment video
+
+you will have to update the settings.py with the ip address and re-clone the updated project
+
+make sure you push the updated project to github, then on aws reclone it and follow those steps for settings.py and update the Ip addresses on those files where you put in ip addresses then restart gunicorn and nginx
