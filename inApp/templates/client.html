@@ -34,24 +34,11 @@
                 <img class="col-sm-6 text-center text-light" img src="{% static 'img/plogo1.png' %}" alt=""
                         >
                 <div class=" col-sm-5 m-2 card text-center">
-                    <h3 class="card-header bg-success text-light" style="border:black 2px solid">Login</h3>
-                    <div class="card-body">
-                        <form action="/loginClient" method="POST">
-                            {% csrf_token %}
-                            <label>Email</label>
-                            <input type="text" name="email" class="form-control">
-                            <label>Password:</label>
-                            <input type="password" name="password" class="form-control">
-                            <button class="mt-1 btn btn-outline-light btn-success" type="submit">Login</button>
-                            <button  class="mt-1 btn btn-outline-light btn-success"><a href="#form">Register</a></button>
-                        </form>
-                        {% if messages %}
-                        <ul class="messages">
-                            {% for message in messages %}
-                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
+                    <h3 class="card-header bg-success text-light" style="border:black 2px solid">Wecome {{client.fullName.capitalize}}</h3>
+                    <div class="card-body">It is great to see you today, were currently serving clients in Fort worth at the moment the estimated wait time for {{client.state.capitalize}} is 2 hours</div>
+                    <div class="d-flex justify-content-around">
+                        <button class=" btn mb-2 btn btn-success btn-outline-light" ><a href="#form" role="button">Edit information</a></button>
+                        <button class=" btn mb-2 btn btn-success btn-outline-light" ><a href="#form" role="button">Log Out</a></button>
                     </div>
                 </div>
             </div>
@@ -165,42 +152,6 @@
         </div>
         <div class="container" style="border-top: 1px black solid;">
             <div class="row">
-                <div class="col" style="text-align: center; margin-top: 30px;">
-                    <a name="form"></a>
-                    {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    <form action="/createClient" method="POST" style="border: black 2px solid;">
-                        <h1>Register to Request Services</h1>
-                        {% csrf_token %}
-                        <p>Company Name:</p>
-                        <input type="text" name="companyName">
-                        <p>Full Name:</p>
-                        <input type="text" name="fullName">
-                        <p>Street Address:</p>
-                        <input type="text" name="streetAddress">
-                        <p>Zip Code:</p>
-                        <input type="number" name="zipCode">
-                        <p>City:</p>
-                        <input type="text" name="state">
-                        <p>Email:</p>
-                        <input type="text" name="email">
-                        <p>Phone Number:</p>
-                        <input type="number" name="phone">
-                        <br>
-                        <p>Password:</p>
-                        <input type="password" name="password">
-                        <br>
-                        <p>Confirm password:</p>
-                        <input type="password" name="cPassword">
-                        <br>
-                        <button type="submit" class="mt-2 btn btn-success btn-outline-light">Request</button>
-                    </form>
-                </div>
                 <div class="col" style="text-align: center; margin-top: 30px;">
                     <h2>Tailor fit for you</h2>
                     <p>Rich in mystery citizens of distant epochs a still more glorious dawn awaits vanquish the

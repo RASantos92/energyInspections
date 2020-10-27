@@ -20,15 +20,24 @@ def createClient(request):
         securedPass= bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
         oneClient = Client.objects.create(fullName=request.POST['fullName'],companyName=request.POST['companyName'],streetAddress=request.POST['streetAddress'],email=request.POST['email'],password=securedPass,zipCode=request.POST['zipCode'], state=request.POST['state'], phone=request.POST['phone'])
         request.session['clientId'] = oneClient.id
-        return redirect('/')
+        return redirect('/clientPage')
 
 def loginClient(request):
-    valErrors = Client.objects.loginValidator(request.POST)
-    if len(valErrors) > 0:
-        for value in valErrors.values():
-            messages.loginErrors(request, value)
+    errors = Client.objects.loginValidator(request.POST)
+    if len(errors) > 0:
+        for value in errors.values():
+            messages.error(request, value)
         return redirect('/')
     else:
-        clientWithEmail = Client.objects.filter(email = request.POST['email'])
-        request.session['userId'] = usersWithEmail[0].id
+        clientsWithEmail = Client.objects.filter(email = request.POST['email'])
+        request.session['clientId'] = clientsWithEmail[0].id
+        return redirect('/clientPage')
+
+def clientPage(request):
+    if "clientId" not in request.session:
         return redirect('/')
+    else:
+        context = {
+            'client': Client.objects.get(id=request.session['clientId']),
+        }
+    return render(request, "client.html", context)

@@ -13,8 +13,8 @@ class ClientManager(models.Manager):
 		elif len(clientsWithEmail) == 0:
 			loginErrors['emailNotFound'] = "Email is not found please register to login"
 		else:
-			userToCheck = usersWithEmail[0]
-			if bcrypt.checkPw(postData['password'].encode(), clientsWithEmail[0].password.encode()):
+			clientToCheck = clientsWithEmail[0]
+			if bcrypt.checkpw(postData['password'].encode(), clientsWithEmail[0].password.encode()):
 				print("password matches")
 			else:
 				loginErrors['pwmatch'] = "Password Incorrect"
