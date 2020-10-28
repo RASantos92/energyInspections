@@ -16,8 +16,8 @@
 
     <body>
         <a name="top"></a>
-        <div class="container" >
-            <div class="row" >
+        <div class="container">
+            <div class="row">
                 <div class="h-100 col bg-success"
                     style="display: flex; justify-content: center; border:black 1px solid; border-right: 0px solid black;">
                     <a class="btn btn-success" href="#" role="button">Life Enery Inspections</a></div>
@@ -31,8 +31,7 @@
         </div>
         <div class="container">
             <div class="row d-flex justify-content-around">
-                <img class="col-sm-6 text-center text-light" img src="{% static 'img/plogo1.png' %}" alt=""
-                        >
+                <img class="col-sm-6 text-center text-light" img src="{% static 'img/plogo1.png' %}" alt="">
                 <div class=" col-sm-5 m-2 card text-center">
                     <h3 class="card-header bg-success text-light" style="border:black 2px solid">Login</h3>
                     <div class="card-body">
@@ -43,7 +42,7 @@
                             <label>Password:</label>
                             <input type="password" name="password" class="form-control">
                             <button class="mt-1 btn btn-outline-light btn-success" type="submit">Login</button>
-                            <button  class="mt-1 btn btn-outline-light btn-success"><a href="#form">Register</a></button>
+                            <button class="mt-1 btn btn-outline-light btn-success"><a href="#form">Register</a></button>
                         </form>
                         {% if messages %}
                         <ul class="messages">
@@ -72,25 +71,11 @@
                 </div>
             </div>
         </div>
-        <!-- carousel -->
-        <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="..." alt="First slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="..." alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="..." alt="Third slide">
-                </div>
-            </div>
-        </div> -->
         <div class="container">
             <div class="row" style="background: url({% static 'img/img6.jpg' %}); background-size: 1136px 400px;">
                 <div class="col-lg text-body"
                     style="text-align: center; background: rgba(12, 255, 12, 0.3); padding: 20px;">
-                    <div class="col text-body" id="fill" style="background: rgba(12, 255, 12, 0.8);">
+                    <div class="col text-body" id="fill">
                         <h2>About IECC</h2>
                         <p>Life Energy Inspections is a third party IECC energy code compliance company. Several
                             Municipalities require a certified IECC inspector since IECC energy code became a state law
@@ -98,13 +83,14 @@
                             Commercial Services include IECC Plan Review – IECC Comcheck - IECC Inspections. To
                             Schedule an Inspection <a href="#form">click here</a></p>
                     </div>
-                    <div class="col text-body" style="background: rgba(12, 255, 12, 0.8);"><a style="color: black;"
-                            href="">(817)555-5555</a> | <a style="color: black;" href="">TimEbel@lifeinspections.com</a>
+                    <div class="col text-body"><a style="color: black;" href=""><b>817)555-5555</b></a> | <a
+                            style="color: black;" href=""><b>TimEbel@lifeinspections.com</b></a>
                     </div>
                 </div>
                 <div class="col"
                     style="background: rgba(12, 255, 12, 0.3); display: flex; justify-content: center; padding: 20px;">
-                    <img id="discard" src="{% static 'img/ieccLogo1.jpg' %}" alt="" height="250px" width="400px"></div>
+                    <img id="discard" src="{% static 'img/ieccLogo1.jpg' %}" alt="" height="250px" width="400px">
+                </div>
             </div>
         </div>
         </div>
