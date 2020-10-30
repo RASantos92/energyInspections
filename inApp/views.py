@@ -6,9 +6,8 @@ from . models import *
 from django.db.models import Q
 import requests
 import smtplib
-api_file = open("api-key.txt", "r")
-api_key = api_file.read()
-api_file.close()
+
+
 
 def index(request):
         return render(request, "index.html")
@@ -41,14 +40,14 @@ def clientPage(request):
         return redirect('/')
     else:
         client = Client.objects.get(id=request.session['clientId'])
-        
         start = "fort worth"
         end = (client.state)
         url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
         r = requests.get(url + "origins=" + start + "&destinations=" + end + "&key=" + api_key)
         time = r.json()["rows"][0]["elements"][0]["duration"]["text"]
+        clientTime = giveExtraTime(time)
         context = {
-            'time' : time,
+            'time' : clientTime,
             'client': Client.objects.get(id=request.session['clientId']),
         }
     return render(request, "client.html", context)
@@ -57,3 +56,35 @@ def destroySession(request):
     request.session.clear()
     return redirect('/')
 
+
+def giveExtraTime(time):
+    newStr = ""
+    output = ""
+    if len(time) == 7:
+        hours = 0
+        newStr += time[0]
+        newStr += time[1]
+        for i in range(2,len(time),1):
+            output += time[i]
+        x = int(newStr) + 60
+        finalOutput = str(x) + output
+        if x > 60:
+            while x > 60:
+                x += -60
+                hours += 1 
+            if hours == 1:
+                print(hours)
+                x = (str(hours) + " hour " + str(x))
+            if hours > 1:
+                print(hours)
+                x = (str(hours) + " hours " + str(x))
+            finalOutput = x + output
+        return finalOutput
+    if len(time) == 14:
+        newStr += time[0]
+        for i in range(1,len(time),1):
+            output += time[i]
+        x = int(newStr) + 1
+        finalOutput = str(x) + output
+        print(str(x) + output)
+        return finalOutput
