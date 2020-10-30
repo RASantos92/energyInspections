@@ -6,8 +6,9 @@ from . models import *
 from django.db.models import Q
 import requests
 import smtplib
-
-api_key = "AIzaSyAmYWHcxVhiGEK-F_-kcO0bZI0_-Tw8rPE"
+api_file = open("api-key.txt", "r")
+api_key = api_file.read()
+api_file.close()
 
 def index(request):
         return render(request, "index.html")
