@@ -4,8 +4,10 @@ import bcrypt
 from django.http import HttpResponseRedirect
 from . models import *
 from django.db.models import Q
+import requests
+import smtplib
 
-
+api_key = "AIzaSyAmYWHcxVhiGEK-F_-kcO0bZI0_-Tw8rPE"
 
 def index(request):
         return render(request, "index.html")
@@ -37,7 +39,20 @@ def clientPage(request):
     if "clientId" not in request.session:
         return redirect('/')
     else:
+        client = Client.objects.get(id=request.session['clientId'])
+        
+        start = "fort worth"
+        end = (client.state)
+        url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
+        r = requests.get(url + "origins=" + start + "&destinations=" + end + "&key=" + api_key)
+        time = r.json()["rows"][0]["elements"][0]["duration"]["text"]
         context = {
+            'time' : time,
             'client': Client.objects.get(id=request.session['clientId']),
         }
     return render(request, "client.html", context)
+
+def destroySession(request):
+    request.session.clear()
+    return redirect('/')
+
