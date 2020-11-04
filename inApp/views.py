@@ -7,7 +7,7 @@ from django.db.models import Q
 import requests
 import smtplib
 
-
+api_key = "AIzaSyAmYWHcxVhiGEK-F_-kcO0bZI0_-Tw8rPE"
 
 def index(request):
         return render(request, "index.html")
@@ -20,7 +20,7 @@ def createClient(request):
         return redirect(request.META.get('HTTP_REFERER'))
     else:
         securedPass= bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
-        oneClient = Client.objects.create(fullName=request.POST['fullName'],companyName=request.POST['companyName'],streetAddress=request.POST['streetAddress'],email=request.POST['email'],password=securedPass,zipCode=request.POST['zipCode'], state=request.POST['state'], phone=request.POST['phone'])
+        oneClient = Client.objects.create(fullName=request.POST['fullName'],companyName=request.POST['companyName'],streetAddress=request.POST['streetAddress'],email=request.POST['email'],password=securedPass,zipCode=request.POST['zipCode'], city=request.POST['city'], phone=request.POST['phone'])
         request.session['clientId'] = oneClient.id
         return redirect('/clientPage')
 
@@ -41,7 +41,7 @@ def clientPage(request):
     else:
         client = Client.objects.get(id=request.session['clientId'])
         start = "fort worth"
-        end = (client.state)
+        end = (client.city)
         url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&"
         r = requests.get(url + "origins=" + start + "&destinations=" + end + "&key=" + api_key)
         time = r.json()["rows"][0]["elements"][0]["duration"]["text"]

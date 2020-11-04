@@ -32,14 +32,11 @@ def giveExtraTime(time):
                 x += -60
                 hours += 1 
             if hours == 1:
-                print(hours)
                 x = (str(hours) + " hour " + str(x))
             if hours > 1:
-                print(hours)
                 x = (str(hours) + " hours " + str(x))
             finalOutput = x + output
         return finalOutput
-
     if len(time) == 14:
         newStr += time[0]
         for i in range(1,len(time),1):
@@ -50,5 +47,4 @@ def giveExtraTime(time):
         return finalOutput
 
 x = giveExtraTime(time)
-print(len(time))
 print("\nThe total travel time from home to work is", x)

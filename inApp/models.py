@@ -70,7 +70,7 @@ class Client(models.Model):
 	streetAddress= models.CharField(max_length=120)
 	email= models.CharField(max_length=45)
 	zipCode= models.CharField(max_length=10)
-	state= models.CharField(max_length=20)
+	city= models.CharField(max_length=20)
 	phone= models.CharField(max_length=12)
 	password = models.CharField(max_length=45, null=True)
 	created_at= models.DateTimeField(auto_now_add=True)
