@@ -76,3 +76,12 @@ class Client(models.Model):
 	created_at= models.DateTimeField(auto_now_add=True)
 	updated_at= models.DateTimeField(auto_now=True)
 	objects= ClientManager()
+
+class WorkRequest(models.Model):
+	client = models.ForeignKey(Client, related_name="workRequests", on_delete = models.CASCADE)
+	jobLocation = models.CharField(max_length=45)
+	phone = models.CharField(max_length = 13)
+	prefferedInspectionDate = models.DateTimeField()
+	comments = models.CharField(max_length = 300)
+	created_at= models.DateTimeField(auto_now_add=True)
+	updated_at= models.DateTimeField(auto_now=True)

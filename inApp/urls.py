@@ -17,6 +17,9 @@ urlpatterns = [
     path('loginClient', views.loginClient),
     path('clientPage', views.clientPage),
     path('destroySession', views.destroySession),
+    path('aboutWhy', views.aboutWhy),
+    path('services', views.services),
+    path('blogs', views.root)
 ]
 #  life.energy@att.net
 #  Sunnie69

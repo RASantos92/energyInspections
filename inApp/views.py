@@ -20,8 +20,11 @@ def createClient(request):
         return redirect(request.META.get('HTTP_REFERER'))
     else:
         securedPass= bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
-        oneClient = Client.objects.create(fullName=request.POST['fullName'],companyName=request.POST['companyName'],streetAddress=request.POST['streetAddress'],email=request.POST['email'],password=securedPass,zipCode=request.POST['zipCode'], city=request.POST['city'], phone=request.POST['phone'])
+        oneClient = Client.objects.create(fullName=request.POST['fullName'],companyName=request.POST['companyName'],
+
+        streetAddress=request.POST['streetAddress'],email=request.POST['email'],password=securedPass,zipCode=request.POST['zipCode'], city=request.POST['city'], phone=request.POST['phone'])
         request.session['clientId'] = oneClient.id
+        oneClient.pto = 144
         return redirect('/clientPage')
 
 def loginClient(request):
@@ -52,9 +55,18 @@ def clientPage(request):
         }
     return render(request, "client.html", context)
 
+def aboutWhy(request):
+    return render(request, "why.html")
+
+def services(request):
+    return render(request, "services.html")
+
 def destroySession(request):
     request.session.clear()
     return redirect('/')
+
+def root(request):
+    return redirct("/blogs")
 
 
 def giveExtraTime(time):
@@ -88,3 +100,10 @@ def giveExtraTime(time):
         finalOutput = str(x) + output
         print(str(x) + output)
         return finalOutput
+        
+
+
+testDate="12/01/1992"
+testDate1="12/01/1992"
+print(testDate <= testDate1)
+

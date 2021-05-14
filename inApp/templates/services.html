@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.scss' %}">
+
+    <head>
+
+    <body>
+        <a name="top"></a>
+        <div class="container">
+            <div class="row d-flex justify-content-around">
+                <div class="h-100 col bg-success border border-dark text-center">
+                    <a class="btn btn-success mb-3 mt-1 pt-2" href="/aboutWhy" role="button">Why Life Energy</a>
+                </div>
+                <div class="h-100 col bg-success border border-dark text-center"><a
+                        class="btn btn-success mb-3 mt-1 pt-2" href="/clientPage" role="button"> Home</a>
+                </div>
+                <div class="h-100 col bg-success border border-dark text-center" id="discard">
+                    <a class="btn btn-success mb-3 mt-1 pt-2" href="#form" role="button">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row d-flex justify-content-around">
+                <img class="col-sm-6 text-center text-light" img src="{% static 'img/plogo1.png' %}" alt="">
+                <div class=" col-sm-5 m-2 card text-center">
+                    <h3 class="card-header bg-success text-light" style="border:black 2px solid">Wecome
+                        {{client.fullName.capitalize}}</h3>
+                    <div class="card-body">It is great to see you today, were currently serving clients in Fort worth at
+                        the moment the estimated wait time for {{client.city.capitalize}} is {{time}}</div>
+                    <div class="d-flex justify-content-around">
+                        <button class=" btn mb-2 btn btn-success btn-outline-light"><a href="#form" role="button">Edit
+                                information</a></button>
+                        <button class=" btn mb-2 btn btn-success btn-outline-light"><a href="/destroySession"
+                                role="button">Log Out</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col text-body" style="text-align: center;">
+                    <h2 class="font-weight-bold">Services</h2>
+                    <div class="col text-body">
+                        <h3>COMMERCIAL PLAN REVIEWS</h3>
+                        <h3>COMMERCIAL SITE INSPECTIONS</h3>
+                        <ul>
+                            <ui>Required inspections</ui>
+                            <ui>Footings and Foundations – Insulation</ui>
+                            <ui>Thermal Envelope – Insulation, Fenestration and Air sealing</ui>
+                            <ui>Plumbing – Insulation, Controls, Heat Traps</ui>
+                            <ui>Mechanical – HVAC equipment sizing, Controls, Damper Leakage, Duct Sealing and Insulation, Fan Efficiency, Energy Recovery and  Economizers</ui>
+                            <ui>Mechanical – HVAC equipment sizing, Controls, Damper Leakage, Duct Sealing and Insulation, Fan Efficiency, Energy Recovery and  Economizers</ui>
+                            <ui>Final – Verify install and proper operation of all required controls and documentation verifying building commissioning have been conducted</ui>
+                        </ul>
+                        <h3>INTRODUCING COMMERCIAL REMOTE VIRTUAL INSPECTIONS</h3>
+                        <h3 class="font-weight-bold">WHAT IS REMOTE VIRTUAL INSPECTION?</h3>
+                        <p>REMOTE VIRTUAL INSPECTION (RVI) IS AN EFFICIENT AND TIMELY INSPECTION PROCESS UTILIZING TODAYS TECHNOLOGY.</p>
+                        <h3 class="font-weight-bold">HOW CAN RVI BENEFIT THE CONTRACTOR?</h3>
+                        <ol>
+                            <li>NEAR IMMEDIATE INSPECTIONS</li>
+                            <li>INSPECTIONS SCHEDULED ONLINE CAN BE MADE SAME DAY AND SOME WITHIN THE SAME HOUR.</li>
+                            <li>TIMELY INSPECTIONS KEEP PROJECTS ON TRACK.</li>
+                        </ol>
+                        <h3 class="font-weight-bold">HOW CAN RVI BENEFIT THE CONTRACTOR?</h3>
+                        <ol>
+                            <li>NEAR IMMEDIATE INSPECTIONS</li>
+                            <li>INSPECTIONS SCHEDULED ONLINE CAN BE MADE SAME DAY AND SOME WITHIN THE SAME HOUR.</li>
+                            <li>TIMELY INSPECTIONS KEEP PROJECTS ON TRACK.</li>
+                        </ol>
+                        <h3 class="font-weight-bold">HOW DO I SCHEDULE AN RVI INSPECTION?</h3>
+                        <h3 class="font-weight-bold">WHAT WILL I NEED TO DO FOR AN RVI INPSECTION?</h3>
+                        <ol>
+                            <li>SCHEDULE AN INSPECTION</li>
+                            <li>EMAIL PDF PLANS AND PERMIT TO -- email link placeholder--</li>
+                            <li>ELECTRONICALLY SIGN CONSENT</li>
+                            <p>3.1. Consents to the use of the remote inspections. 3.2. Is responsible for their own safety during the remote inspection. 3.3. Allows the complete use of the videos and photos of the remote inspection by the AHJ. 3.4. Certifies they are making available the site and inspection items truthfully and to the best of their ability. 3.5. Is responsible for compliance with all codes and standards applicable to the project. 3.6. Acknowledges that participation in the remote inspection program is voluntary (if not a mandatory program within the AHJ’s jurisdiction). 3.7. Acknowledges that the decision to perform an RVI is at the sole discretion of the AHJ.</p>
+                            <li>ENSURE VIDEO DEVICE FULLY CHARGED</li>
+                            <li>INSPECTIONS SCHEDULED ONLINE CAN BE MADE SAME DAY AND SOME WITHIN THE SAME HOUR.</li>
+                            <li>COMPETENT PERSON MUST BE 18 YEARS OR OLDER</li>
+                            <li>SEE LINK FOR MORE DETAILS --placeholder for link in email--</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="border-top: black solid 1px; padding-top: 30px; margin-top: 20px;">
+            <div class="row">
+                <div class="col text-body mx-auto m-2">
+                    <h2><img src="{% static 'img/plogo2.png' %}" alt="" width="250px" height="150px"></h2>
+                    <p class=" col-10 mx-auto text-align-center">Phone: <a href=""
+                            style="color: black;">(817)555-5555</a></p>
+                    <p class=" col-9 mx-auto text-align-center">FAX: <a href="" style="color: black;">(817)555-5555</a>
+                    </p>
+                </div>
+                <div class="col text-body">
+                    <h2>Our Location:</h2>
+                    <p><a href="" style="color: black;">4637 Gila Bend Ln.</a></p>
+                    <p><a href="" style="color: black;">Fort Worth, TX, 76137</a></p>
+                </div>
+                <div class="col text-body">
+                    <h2>Quick Links:</h2>
+                    <p><a href="#top" style="color: black;">Go to top</a></p>
+                    <p><a href="" style="color: black;">Home</a></p>
+                    <p><a href="" style="color: black;">Why Hire Us?</a></p>
+                    <p><a href="" style="color: black;">Services</a></p>
+                    <p><a href="" style="color: black;">Contact Us</a></p>
+                    <p><a href="" style="color: black;">Priviacy Policy</a></p>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!-- trying to get CDN for popperjs to work -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script>
+        const button = document.querySelector('#button');
+        const tooltip = document.querySelector('#tooltip');
+        Popper.createPopper(button, tooltip);
+    </script>
+    <script src="js/popper.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <!-- trying to get CDN for popperjs to work -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</html>
+<p1 style="text-align: center;">copyright © RobertSantos </p1>

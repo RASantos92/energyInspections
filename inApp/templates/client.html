@@ -19,10 +19,10 @@
         <div class="container" >
             <div class="row d-flex justify-content-around" >
                 <div class="h-100 col bg-success border border-dark text-center">
-                    <a class="btn btn-success mb-3 mt-1 pt-2" href="#" role="button">Life Enery Inspections</a>
+                    <a class="btn btn-success mb-3 mt-1 pt-2" href="/aboutWhy" role="button">Why Life Energy</a>
                 </div>
                 <div class="h-100 col bg-success border border-dark text-center"><a class="btn btn-success mb-3 mt-1 pt-2"
-                        href="#" role="button">Energy Compliance</a>
+                        href="/services" role="button">Services</a>
                     </div>
                 <div class="h-100 col bg-success border border-dark text-center" id="discard">
                     <a class="btn btn-success mb-3 mt-1 pt-2" href="#form" role="button">Contact Us</a>
@@ -34,7 +34,7 @@
                 <img class="col-sm-6 text-center text-light" img src="{% static 'img/plogo1.png' %}" alt=""
                         >
                 <div class=" col-sm-5 m-2 card text-center">
-                    <h3 class="card-header bg-success text-light" style="border:black 2px solid">Wecome {{client.fullName.capitalize}}</h3>
+                    <h3 class="card-header bg-success text-light" style="border:black 2px solid, margin-top: 15px">Wecome {{client.fullName.capitalize}}</h3>
                     <div class="card-body">It is great to see you today, were currently serving clients in Fort worth at the moment the estimated wait time for {{client.city.capitalize}} is {{time}}</div>
                     <div class="d-flex justify-content-around">
                         <button class=" btn mb-2 btn btn-success btn-outline-light" ><a href="#form" role="button">Edit information</a></button>
@@ -59,8 +59,9 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
-            <div class="row" style="background: url({% static 'img/img6.jpg' %}); background-size: 1136px 400px;">
+            <div class="row" style= "background: url({% static 'img/img6.jpg' %}); background-size: 1136px 400px;" >
                 <div class="col-lg text-body"
                     style="text-align: center; background: rgba(12, 255, 12, 0.3); padding: 20px;">
                     <div class="col text-body" id="fill" >
@@ -80,6 +81,7 @@
                     <img id="discard" src="{% static 'img/ieccLogo1.jpg' %}" alt="" height="250px" width="400px"></div>
             </div>
         </div>
+        
         </div>
         <div class="container" style=" padding-bottom: 30px;">
             <div class="row">
