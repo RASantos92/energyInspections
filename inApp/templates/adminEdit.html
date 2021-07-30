@@ -30,28 +30,24 @@
                             <a class="nav-link active" href="#form">Contact Us</a>
                         </li>
                     </div>
-                </ul><span class="navbar-text actions" id="discard">Welcome {{client.fullName.capitalize}}</span>
+                </ul><span class="navbar-text actions" id="discard">Welcome {{admin.fullName.capitalize}}</span>
             </div>
         </nav>
         <br/>
         <br/>
-        <div id ="discard" class="row">
+        <div class="row">
             <div class="col-4"></div>
-            <form action="/workRequestProcess" class = "col-4 bg-success"method="post">
+            <form action="/adminEditProcess" class = "col-4 bg-success"method="post">
                 {% csrf_token %}
-                <h2 class="text-center">Inspection Request</h2>
-                <div class="form-group"><input type="text" class="form-control" name="jobLocation" placeholder="Job Location" /></div>
-                <div class="form-group"><input type="text" class="form-control" name="phone" placeholder="Contact Phone Number or Email"/></div>
-                {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                <label>Preffered Inspection Date</label>
-                <div class="form-group"><input class="form-control" type="date" name="prefferedInspectionDate" placeholder="Preffered Inspection Date"/></div>
-                <div class="form-group"><textarea class="form-control" name="comment" placeholder="Any comments, questions, or concerns" rows="14"></textarea></div>
+                <h2 class="text-center">Admin Edit</h2>
+                <label for="missionS">Mission Statment</label>
+                <div class="form-group"><textarea class="form-control" name="missionS" placeholder="{{admin.missionS}}" rows="7"></textarea></div>
+                <label for="whyLife">Why Life</label>
+                <div class="form-group"><textarea class="form-control" name="whyLife" placeholder="{{admin.whyLife}}" rows="7"></textarea></div>
+                <label for="OurGuarantee">Our Guarantee</label>
+                <div class="form-group"><textarea class="form-control" name="OurGuarantee" placeholder="{{admin.OurGuarantee}}" rows="7"></textarea></div>
+                <label for="tailorFit">Tailor fit</label>
+                <div class="form-group"><textarea class="form-control" name="tailorFit" placeholder="{{admin.tailorFit}}" rows="7"></textarea></div>
                 <div class="row form-group d-flex justify-content-around">
                     <button class="btn btn-primary" type="submit">Submit Request</button>
                     
@@ -59,28 +55,6 @@
             </form>
             <div class="col-4"></div>
         </div>
-        <div id="discardBig">
-        <form action="/workRequestProcess" class = "col bg-success"method="post">
-            {% csrf_token %}
-            <h2 class="text-center">Inspection Request</h2>
-            <div class="form-group"><input type="text" class="form-control" name="jobLocation" placeholder="Job Location" /></div>
-            <div class="form-group"><input type="text" class="form-control" name="phone" placeholder="Contact Phone Number or Email"/></div>
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-            <label>Preffered Inspection Date</label>
-            <div class="form-group"><input class="form-control" type="date" name="prefferedInspectionDate" placeholder="Preffered Inspection Date"/></div>
-            <div class="form-group"><textarea class="form-control" name="comment" placeholder="Any comments, questions, or concerns" rows="14"></textarea></div>
-            <div class="row form-group d-flex justify-content-around">
-                <button class="btn btn-primary" type="submit">Submit Request</button>
-                
-            </div>
-        </form>
-    </div>
         <div class="container" style="border-top: black solid 1px; padding-top: 30px; margin-top: 20px;">
             <div class="row">
                 <div class="col text-body mx-auto m-2">

@@ -30,57 +30,75 @@
                             <a class="nav-link active" href="#form">Contact Us</a>
                         </li>
                     </div>
-                </ul><span class="navbar-text actions" id="discard">Welcome {{client.fullName.capitalize}}</span>
+                </ul><span class="navbar-text actions" id="discard">Welcome {{admin.fullName.capitalize}}</span>
             </div>
         </nav>
         <br/>
         <br/>
-        <div id ="discard" class="row">
+        <div id="discard" class="row">
             <div class="col-4"></div>
-            <form action="/workRequestProcess" class = "col-4 bg-success"method="post">
-                {% csrf_token %}
-                <h2 class="text-center">Inspection Request</h2>
-                <div class="form-group"><input type="text" class="form-control" name="jobLocation" placeholder="Job Location" /></div>
-                <div class="form-group"><input type="text" class="form-control" name="phone" placeholder="Contact Phone Number or Email"/></div>
+            <div class="col-4" style="text-align: center; margin-top: 30px;">
+                <a name="form"></a>
                 {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                <label>Preffered Inspection Date</label>
-                <div class="form-group"><input class="form-control" type="date" name="prefferedInspectionDate" placeholder="Preffered Inspection Date"/></div>
-                <div class="form-group"><textarea class="form-control" name="comment" placeholder="Any comments, questions, or concerns" rows="14"></textarea></div>
-                <div class="row form-group d-flex justify-content-around">
-                    <button class="btn btn-primary" type="submit">Submit Request</button>
-                    
-                </div>
-            </form>
-            <div class="col-4"></div>
-        </div>
-        <div id="discardBig">
-        <form action="/workRequestProcess" class = "col bg-success"method="post">
-            {% csrf_token %}
-            <h2 class="text-center">Inspection Request</h2>
-            <div class="form-group"><input type="text" class="form-control" name="jobLocation" placeholder="Job Location" /></div>
-            <div class="form-group"><input type="text" class="form-control" name="phone" placeholder="Contact Phone Number or Email"/></div>
-            {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
                     <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
                     {% endfor %}
                 </ul>
-            {% endif %}
-            <label>Preffered Inspection Date</label>
-            <div class="form-group"><input class="form-control" type="date" name="prefferedInspectionDate" placeholder="Preffered Inspection Date"/></div>
-            <div class="form-group"><textarea class="form-control" name="comment" placeholder="Any comments, questions, or concerns" rows="14"></textarea></div>
-            <div class="row form-group d-flex justify-content-around">
-                <button class="btn btn-primary" type="submit">Submit Request</button>
-                
+                {% endif %}
+            <form action="/clientEditProcess" method="POST" style="border: black 2px solid;">
+                <h1>Edit or add more information</h1>
+                {% csrf_token %}
+                <p>Company Name:</p>
+                <input type="text" name="companyName" placeholder="{{client.companyName}}">
+                <p>Full Name:</p>
+                <input type="text" name="fullName" placeholder="{{client.fullName}}">
+                <p>Zip Code:</p>
+                <input type="number" name="zipCode" placeholder="{{client.zipCode}}">
+                <p>Email:</p>
+                <input type="email" name="email" placeholder="{{client.email}}">
+                <p>Street Address:</p>
+                <input type="text" name="streetAddress" placeholder="(optional)">
+                <p>City:</p>
+                <input type="text" name="city" placeholder="(optional)">
+                <p>Phone Number:</p>
+                <input type="number" name="phone" placeholder="(optional)">
+                <br>
+                <button type="submit" class="mt-2 btn btn-success btn-outline-light">Submit Edit</button>
+            </form>
             </div>
-        </form>
-    </div>
+            <div class="col-4"></div>
+        </div>
+        <div id="discardBig">
+        <a name="form"></a>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            <form class="text-center" action="/clientEditProcess" method="POST" style="border: black 2px solid;">
+                <h1>Edit or add more information</h1>
+                {% csrf_token %}
+                <p>Company Name:</p>
+                <input type="text" name="companyName" placeholder="{{client.companyName}}">
+                <p>Full Name:</p>
+                <input type="text" name="fullName" placeholder="{{client.fullName}}">
+                <p>Zip Code:</p>
+                <input type="number" name="zipCode" placeholder="{{client.zipCode}}">
+                <p>Email:</p>
+                <input type="email" name="email" placeholder="{{client.email}}">
+                <p>Street Address:</p>
+                <input type="text" name="streetAddress" placeholder="(optional)">
+                <p>City:</p>
+                <input type="text" name="city" placeholder="(optional)">
+                <p>Phone Number:</p>
+                <input type="number" name="phone" placeholder="(optional)">
+                <br>
+                <button type="submit" class="mt-2 btn btn-success btn-outline-light">Submit Edit</button>
+            </form>
+            </div>
         <div class="container" style="border-top: black solid 1px; padding-top: 30px; margin-top: 20px;">
             <div class="row">
                 <div class="col text-body mx-auto m-2">
@@ -114,8 +132,8 @@
         const tooltip = document.querySelector('#tooltip');
         Popper.createPopper(button, tooltip);
     </script>
-    <script src="js/popper.min.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script> -->
+    <script src="js/popper.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script> -->
     <!-- trying to get CDN for popperjs to work -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

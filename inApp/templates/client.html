@@ -15,30 +15,59 @@
     <head>
 
     <body>
-        <a name="top"></a>
-        <div class="container" >
-            <div class="row d-flex justify-content-around" >
-                <div class="h-100 col bg-success border border-dark text-center">
-                    <a class="btn btn-success mb-3 mt-1 pt-2" href="/aboutWhy" role="button">Why Life Energy</a>
+        <nav id="navMarge" class="navbar bg-success navbar-light navbar-expand-md navigation-clean-button">
+            <div class="container"><a class="navbar-brand" href="#">Life Energy Inspections</a><button
+                    data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span
+                        class="visually-hidden"></span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/aboutWhy">Why Life</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/services">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/workRequestForm">Contact Us</a>
+                        </li>
                 </div>
-                <div class="h-100 col bg-success border border-dark text-center"><a class="btn btn-success mb-3 mt-1 pt-2"
-                        href="/services" role="button">Services</a>
-                    </div>
-                <div class="h-100 col bg-success border border-dark text-center" id="discard">
-                    <a class="btn btn-success mb-3 mt-1 pt-2" href="#form" role="button">Contact Us</a>
-                </div>
+                </ul><span id="discard" class="navbar-text actions pt-4">Welcome {{client.fullName.capitalize}}</span>
             </div>
-        </div>
+        </nav>
+        <br />
+        <br />
+        <a name="top"></a>
         <div class="container">
             <div class="row d-flex justify-content-around">
-                <img class="col-sm-6 text-center text-light" img src="{% static 'img/plogo1.png' %}" alt=""
-                        >
+                <img id="resizeLogo" class="col-sm-6 text-center text-light" img src="{% static 'img/plogo1.png' %}"
+                    alt="">
                 <div class=" col-sm-5 m-2 card text-center">
-                    <h3 class="card-header bg-success text-light" style="border:black 2px solid, margin-top: 15px">Wecome {{client.fullName.capitalize}}</h3>
-                    <div class="card-body">It is great to see you today, were currently serving clients in Fort worth at the moment the estimated wait time for {{client.city.capitalize}} is {{time}}</div>
+                    <h3 class="card-header bg-success text-light" style="border:black 2px solid">Wecome
+                        {{client.fullName.capitalize}}</h3>
+                    <div class="card-body">It is great to see you today,
+                        {% if notReviewed|length == 0%}
+                        You currently have no inspection request to be reviewed. If you are in need of an inspection or
+                        more information on energy inspections please fill out a inspection request <a
+                            class="text-dark font-weight-bold" href="/workRequestForm">here</a>
+                        {% endif %}
+                        {% if notReviewed|length > 0 %}
+                        These are your inspection requests still in review :
+                        {% endif %}
+                        <ul>
+                            {% for wR in client.workRequests.all %}
+                            {% if wR.reviewed == False %}
+                            <a class="text-dark" href="/showWorkR/{{wR.id}}">
+                                <li> Ins.# {{wR.id}} || preffered date: {{wR.prefferedInspectionDate}}</li>
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
                     <div class="d-flex justify-content-around">
-                        <button class=" btn mb-2 btn btn-success btn-outline-light" ><a href="#form" role="button">Edit information</a></button>
-                        <button class=" btn mb-2 btn btn-success btn-outline-light" ><a href="/destroySession" role="button">Log Out</a></button>
+                        <button class=" btn mb-2 btn btn-success btn-outline-light"><a href="/clientEdit/{{client.id}}" role="button">Edit
+                                information</a></button>
+                        <button class=" btn mb-2 btn btn-success btn-outline-light"><a href="/destroySession"
+                                role="button">Log Out</a></button>
                     </div>
                 </div>
             </div>
@@ -61,27 +90,30 @@
         </div>
 
         <div class="container">
-            <div class="row" style= "background: url({% static 'img/img6.jpg' %}); background-size: 1136px 400px;" >
+            <div class="row" style="background: url({% static 'img/img6.jpg' %}); background-size: 1136px 400px;">
                 <div class="col-lg text-body"
                     style="text-align: center; background: rgba(12, 255, 12, 0.3); padding: 20px;">
-                    <div class="col text-body" id="fill" >
+                    <div class="col text-body" id="fill dicard">
                         <h2>About IECC</h2>
                         <p><b>Life Energy Inspections is a third party IECC energy code compliance company. Several
-                            Municipalities require a certified IECC inspector since IECC energy code became a state law
-                            in 2000 which include Plan Reviews and Onsite inspections
-                            Commercial Services include IECC Plan Review – IECC Comcheck - IECC Inspections. To
-                            Schedule an Inspection <a href="#form">click here</a></b></p>
+                                Municipalities require a certified IECC inspector since IECC energy code became a state
+                                law
+                                in 2000 which include Plan Reviews and Onsite inspections
+                                Commercial Services include IECC Plan Review – IECC Comcheck - IECC Inspections. To
+                                Schedule an Inspection <a href="#form">click here</a></b></p>
                     </div>
-                    <div class="col text-body" ><a style="color: black;"
-                            href=""><b>817)555-5555</b></a> | <a style="color: black;" href=""><b>TimEbel@lifeinspections.com</b></a>
+                    <div class="col text-body"><a style="color: black;" href=""><b>817)555-5555</b></a> | <a
+                            style="color: black;" href=""><b>TimEbel@lifeinspections.com</b></a>
                     </div>
                 </div>
                 <div class="col"
                     style="background:rgba(12, 255, 12, 0.3); display: flex; justify-content: center; padding: 20px;">
-                    <img id="discard" src="{% static 'img/ieccLogo1.jpg' %}" alt="" height="250px" width="400px"></div>
+                    <img class="computer" id="discard" src="{% static 'img/ieccLogo1.jpg' %}" alt="" height="250px"
+                        width="400px">
+                </div>
             </div>
         </div>
-        
+
         </div>
         <div class="container" style=" padding-bottom: 30px;">
             <div class="row">
@@ -180,16 +212,16 @@
         </div>
     </body>
     <!-- trying to get CDN for popperjs to work -->
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script>
         const button = document.querySelector('#button');
         const tooltip = document.querySelector('#tooltip');
         Popper.createPopper(button, tooltip);
     </script>
     <script src="js/popper.min.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script> -->
     <!-- trying to get CDN for popperjs to work -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -197,7 +229,10 @@
         crossorigin="anonymous"></script>
     <script src="://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 </html>
 <p1 style="text-align: center;">copyright © RobertSantos </p1>

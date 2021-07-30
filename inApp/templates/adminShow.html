@@ -17,7 +17,9 @@
     <body>
         <a name="top"></a>
         <nav id="navMarge" class="navbar navbar-light bg-success navbar-expand-md navigation-clean-button">
-            <div class="container"><a class="navbar-brand" href="/clientPage">Life Energy Inspections</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="visually-hidden"></span><span class="navbar-toggler-icon"></span></button>
+            <div class="container"><a class="navbar-brand" href="/adminPage">Life Energy Inspections</a><button
+                    data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span
+                        class="visually-hidden"></span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
@@ -29,58 +31,64 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="#form">Contact Us</a>
                         </li>
-                    </div>
-                </ul><span class="navbar-text actions" id="discard">Welcome {{client.fullName.capitalize}}</span>
+                </div>
+                </ul><span class="navbar-text actions" id="discard">Welcome {{admin.fullName.capitalize}}</span>
             </div>
         </nav>
-        <br/>
-        <br/>
-        <div id ="discard" class="row">
-            <div class="col-4"></div>
-            <form action="/workRequestProcess" class = "col-4 bg-success"method="post">
-                {% csrf_token %}
-                <h2 class="text-center">Inspection Request</h2>
-                <div class="form-group"><input type="text" class="form-control" name="jobLocation" placeholder="Job Location" /></div>
-                <div class="form-group"><input type="text" class="form-control" name="phone" placeholder="Contact Phone Number or Email"/></div>
-                {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-                <label>Preffered Inspection Date</label>
-                <div class="form-group"><input class="form-control" type="date" name="prefferedInspectionDate" placeholder="Preffered Inspection Date"/></div>
-                <div class="form-group"><textarea class="form-control" name="comment" placeholder="Any comments, questions, or concerns" rows="14"></textarea></div>
-                <div class="row form-group d-flex justify-content-around">
-                    <button class="btn btn-primary" type="submit">Submit Request</button>
-                    
+        <br />
+        <br />
+        <div class="row h-100">
+            <div class="col-3"></div>
+            <div class="card col-6">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Client Info</h4>
+                    <div class="row d-flex justify-content-around">
+                        <div class="col">
+                            <p class="card-text">
+                                <p class="font-weight-bold">Client name:</p> {{client.fullName}}
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">
+                                <p class="font-weight-bold">CompanyName:</p> {{client.companyName}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-around">
+                        <div class="col">
+                            <p class="card-text">
+                                <p class="font-weight-bold">Address:</p> {{client.streetAddress}}
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">
+                                <p class="font-weight-bold">Email:</p> {{client.email}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-around">
+                        <div class="col">
+                            <p class="card-text">
+                                <p class="font-weight-bold">Zipcode:</p> {{client.zipCode}}
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text">
+                                <p class="font-weight-bold">City:</p> {{client.city}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text">
+                                <p class= "font-weight-bold">Phone:</p> {{client.phone}}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <div class="col-4"></div>
-        </div>
-        <div id="discardBig">
-        <form action="/workRequestProcess" class = "col bg-success"method="post">
-            {% csrf_token %}
-            <h2 class="text-center">Inspection Request</h2>
-            <div class="form-group"><input type="text" class="form-control" name="jobLocation" placeholder="Job Location" /></div>
-            <div class="form-group"><input type="text" class="form-control" name="phone" placeholder="Contact Phone Number or Email"/></div>
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-            <label>Preffered Inspection Date</label>
-            <div class="form-group"><input class="form-control" type="date" name="prefferedInspectionDate" placeholder="Preffered Inspection Date"/></div>
-            <div class="form-group"><textarea class="form-control" name="comment" placeholder="Any comments, questions, or concerns" rows="14"></textarea></div>
-            <div class="row form-group d-flex justify-content-around">
-                <button class="btn btn-primary" type="submit">Submit Request</button>
-                
             </div>
-        </form>
-    </div>
+            <div class="col-3"></div>
+        </div>
         <div class="container" style="border-top: black solid 1px; padding-top: 30px; margin-top: 20px;">
             <div class="row">
                 <div class="col text-body mx-auto m-2">
@@ -126,9 +134,9 @@
     <script src="://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script> -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 </html>
-<p1 style="text-align: center;">copyright © RobertSantos </p1>
+<p3 style="text-align: center;">Tim and Sunnie </p3>
